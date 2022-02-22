@@ -20,19 +20,4 @@ sequelize
   });
 module.exports = sequelize;
 
-// require("dotenv/config");
-// module.exports = {
-//   dialect: process.env.DB_DIALECT || "mysql",
-//   host: process.env.DB_HOST || "localhost",
-//   username: process.env.DB_USERNAME || "root",
-//   password: process.env.DB_PASSWORD || "",
-//   database: process.env.DB_DATABASE || "apidarkbd",
-//   logging: false,
-//   define: {
-//     timestamps: true,
-//     underscored: true,
-//     // logging: process.env.DEBUG || false,
-//   },
-// };
-
-process.env["NODE_ENV"] = "production";
+// process.env["NODE_ENV"] = "production";
