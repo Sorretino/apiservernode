@@ -5,6 +5,9 @@ const app = express();
 const db = require("./models/db");
 app.use(express.json());
 
+//Rota menus
+const rotaMenu = require("./routes/menu");
+app.use("/menu", rotaMenu);
 //Rotas usuario
 const rotaUsuario = require("./routes/usuario");
 app.use("/usuario", rotaUsuario);
