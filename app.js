@@ -1,9 +1,18 @@
 const express = require("express");
 const User = require("./models/User");
 const app = express();
+const cors = require("cors");
 
 const db = require("./models/db");
 app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log("Acessou o Middleware");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  app.use(cors());
+  next();
+});
 
 //Rota menus
 const rotaMenu = require("./routes/menu");
@@ -13,21 +22,8 @@ const rotaUsuario = require("./routes/usuario");
 app.use("/usuario", rotaUsuario);
 //Rotas Posts
 const rotaPost = require("./routes/posts");
-app.use("/post", rotaPost);
+app.use("/blog", rotaPost);
 // final rotas
-app.use((req, res, next) => {
-  res.header("Acess-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requrested-with,Content-Type,Accep,Authorization"
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    return res.status(200).send({});
-  }
-  this.app.use(cors());
-  next();
-});
 
 app.get("/", async (req, res) => {
   res.send("Pagina inicial da Api Sorrentino ");

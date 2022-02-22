@@ -24,6 +24,10 @@ const Posts = db.define("posts", {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  position: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
 //Posts.sync();
 // verifica se tive alteração da tabela
