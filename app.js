@@ -6,34 +6,34 @@ app.use(cors("*"));
 const db = require("./models/db");
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//   res.set("Access-Control-Allow-Origin", "*");
+app.use((req, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
 
-// res.header("Access-Control-Allow-Origin", "*");
-// res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-// res.header("Access-Control-Allow-Headers", "*");
-// console.log("Acessou o Middleware");
-// res.header(
-//   "Access-Control-Request-Headers",
-//   "Origin, X-Requrested-With,Content-Type,Accept,Authorization"
-// );
-// res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "*");
+  console.log("Acessou o Middleware");
+  res.header(
+    "Access-Control-Request-Headers",
+    "Origin, X-Requrested-With,Content-Type,Accept,Authorization"
+  );
+  res.header("Access-Control-Allow-Origin", "*");
 
-// if (req.method === "OPTIONS") {
-//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   return res.status(200).send({});
-// }
-//   app.use(cors());
-//   next();
-// });
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    return res.status(200).send({});
+  }
+  app.use(cors());
+  next();
+});
 
-// app.use((req, res, next) => {
-//   console.log("Acessou o Middleware");
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   app.use(cors());
-//   next();
-// });
+app.use((req, res, next) => {
+  console.log("Acessou o Middleware");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  app.use(cors());
+  next();
+});
 
 //Rota menus
 const rotaMenu = require("./routes/menu");

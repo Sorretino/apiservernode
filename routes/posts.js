@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 
-router.get("/", (req, res) => {
+router.get("/List", (req, res) => {
   Post.findAll().then(function (posts) {
     return res.json(posts);
   });
@@ -52,6 +52,27 @@ router.delete("/:id", async function (req, res) {
       .json({ message: "Post deletado com sucesso!", dados: dados });
   } catch (err) {
     return res.status(500).json({ error: "Error ao deletar esse Post blog! " });
+  }
+});
+
+router.get("/", async function (req, res) {
+  const LIMIT = 4;
+  try {
+    let { page = 1 } = req.query;
+    page = parseInt(page - 1);
+    const { count: size, rows: dados } = await Post.findAndCountAll({
+      limit: LIMIT,
+      offset: page * LIMIT,
+    });
+    let pages = Math.ceil(size / LIMIT);
+    return res.status(200).json({
+      size,
+      pages,
+      actual: page + 1,
+      dados,
+    });
+  } catch (err) {
+    return res.status(500).json({ error: "Error tentar trazer paginação! " });
   }
 });
 
