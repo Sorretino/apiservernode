@@ -56,7 +56,7 @@ router.delete("/:id", async function (req, res) {
 });
 
 router.get("/", async function (req, res) {
-  const LIMIT = 4;
+  const LIMIT = 6;
   try {
     let { page = 1 } = req.query;
     page = parseInt(page - 1);

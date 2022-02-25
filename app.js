@@ -2,7 +2,8 @@ const express = require("express");
 const User = require("./models/User");
 const app = express();
 const cors = require("cors");
-app.use(cors("*"));
+app.use(cors());
+
 const db = require("./models/db");
 app.use(express.json());
 
