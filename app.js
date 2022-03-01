@@ -45,6 +45,10 @@ app.use("/usuario", rotaUsuario);
 //Rotas Posts
 const rotaPost = require("./routes/posts");
 app.use("/blog", rotaPost);
+
+//Rotas Galeria
+const rotaworkGallery = require("./routes/workgallery");
+app.use("/gallery", rotaworkGallery);
 // final rotas
 
 app.get("/", async (req, res) => {
