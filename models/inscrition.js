@@ -22,7 +22,7 @@ const Incrition = db.define("inscritions", {
     allowNull: false,
   },
 });
-Incrition.sync();
+//Incrition.sync();
 // verifica se tive alteração da tabela
 //Incrition.sync({ alter: true });
 module.exports = Incrition;

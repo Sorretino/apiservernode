@@ -24,4 +24,17 @@ router.post("/", async (req, res) => {
     });
 });
 
+router.delete("/:id", async function (req, res) {
+  try {
+    const dados = await Inscrition.update(req.body, {
+      where: { id: req.params.id },
+    });
+    return res
+      .status(201)
+      .json({ message: "Inscrition deletado com sucesso!", dados: dados });
+  } catch (err) {
+    return res.status(500).json({ error: "Error ao deletar esse Post blog! " });
+  }
+});
+
 module.exports = router;
