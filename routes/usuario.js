@@ -10,19 +10,13 @@ router.get("/", eAdmin, async (req, res) => {
   User.findAll().then(function (users) {
     return res.json({
       erro: false,
-      mensagem: "Listar usuarios",
+      mensagem: "Usuario logado no sistema com sucesso",
       id_usuario_logado: req.user_id,
     });
   });
 });
 
 router.get("/tolist", (req, res) => {
-  User.findAll().then(function (users) {
-    return res.json(users);
-  });
-});
-
-router.get("/login", (req, res) => {
   User.findAll().then(function (users) {
     return res.json(users);
   });
@@ -113,8 +107,11 @@ router.post("/login", async (req, res) => {
   );
   return res.json({
     erro: false,
-    mensagem: "Login realizado com sucesso",
+    name: user.name,
+    email: user.email,
+    password: user.password,
     token: token,
+    mensagem: "Login realizado com sucesso",
   });
 });
 
