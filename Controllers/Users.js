@@ -10,7 +10,7 @@ class UsersController {
       });
     } catch (error) {
       return res.status(500).json({
-        message: "Erro ao tentar listar albuns",
+        message: "Erro ao tentar listar usuarios",
       });
     }
   }

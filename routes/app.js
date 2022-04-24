@@ -1,11 +1,12 @@
 const express = require("express");
-const User = require("./models/User");
+const User = require("../models/User");
 const app = express();
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const rank = require("./session");
 app.use(cors());
 
-const db = require("./models/db");
+const db = require("../models/db");
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -37,29 +38,35 @@ app.use((req, res, next) => {
   next();
 });
 
+//Rota teste controller
+const postblogs = require("./postlog");
+app.use("/postblog", postblogs);
+//Rota PostBlog controller
+const sessions = require("./session");
+app.use("/inscritos", sessions);
 //Rota menus
-const rotaMenu = require("./routes/menu");
+const rotaMenu = require("./menu");
 app.use("/menu", rotaMenu);
 //Rotas usuario
-const rotaUsuario = require("./routes/usuario");
+const rotaUsuario = require("./usuario");
 app.use("/usuario", rotaUsuario);
 //Rotas Posts
-const rotaPost = require("./routes/posts");
+const rotaPost = require("./posts");
 app.use("/blog", rotaPost);
 
 //Rotas Galeria
-const rotaworkGallery = require("./routes/workgallery");
+const rotaworkGallery = require("./workgallery");
 app.use("/gallery", rotaworkGallery);
 
 //Rotas Inscritos no Blog
-const rotaInscritos = require("./routes/inscrition");
+const rotaInscritos = require("./inscrition");
 app.use("/inscritos", rotaInscritos);
 
-// final rotas
+// // final rotas
 
-app.get("/", async (req, res) => {
-  res.send("Pagina inicial da Api Sorrentino ");
-});
+// app.get("/", async (req, res) => {
+//   res.send("Pagina inicial da Api Sorrentino ");
+// });
 
 // app.use("/", (req, res, next) => {
 //   res.status(200).send({
