@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
 
+//Listar to
 router.get("/List", (req, res) => {
   Post.findAll().then(function (posts) {
     return res.json(posts);
   });
 });
 
+//Update
 router.put(":id", async function (req, res) {
   try {
     const dados = await Post.update(req.body, {
@@ -23,6 +25,7 @@ router.put(":id", async function (req, res) {
   }
 });
 
+//Create
 router.post("/", async (req, res) => {
   // console.log(req.body);
   // res.send("Pagina cadastro");
@@ -42,6 +45,7 @@ router.post("/", async (req, res) => {
     });
 });
 
+//Deleção
 router.delete("/:id", async function (req, res) {
   try {
     const dados = await Post.update(req.body, {
@@ -55,6 +59,7 @@ router.delete("/:id", async function (req, res) {
   }
 });
 
+//paginação
 router.get("/", async function (req, res) {
   const LIMIT = 6;
   try {

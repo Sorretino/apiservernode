@@ -22,14 +22,14 @@ router.get("/tolist", (req, res) => {
   });
 });
 
-router.put(":id", async function (req, res) {
+router.put("Del/:id", async function (req, res) {
   try {
     const dados = await User.update(req.body, {
       where: { id: req.params.id },
     });
     return res
       .status(201)
-      .json({ message: "Atualizado com sucesso!", dados: dados });
+      .json({ message: "Usuario tualizado com sucesso!", dados: dados });
   } catch (err) {
     return res.status(500).json({ error: "Nada ainda moiado viadão" });
   }
