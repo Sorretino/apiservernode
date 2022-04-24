@@ -1,14 +1,16 @@
 {
   "name": "backdarkapi",
   "version": "1.0.0",
-  "description": "",
-  
+  "description": "Game Server on api",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
+    "dev:server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Fernando Sorrentino",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
