@@ -1,6 +1,6 @@
 {
   "name": "novaapi24",
-  "version": "1.0.0",
+  "version": "1.0.0b",
   "description": "api node v2",
   "main": "index.js",
   "scripts": {
