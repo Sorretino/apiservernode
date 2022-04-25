@@ -1,11 +1,11 @@
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(
-  "u231026870_DarkBlogDb",
-  "u231026870_DarkBlogDb",
-  "ThemerBlogfull2022",
+  "seubanco",
+  "seuUser",
+  "Password",
   {
-    host: "31.220.104.197",
+    host: "IP.SERVER",
     dialect: "mysql",
   }
 );
@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
 sequelize
   .authenticate()
   .then(function () {
-    console.log("Sucesso conexão com o banco estavel nesse momento");
+    console.log("Sucesso conexão com o Servidor estavel nesse momento");
   })
   .catch(function () {
     console.log("Erro conexão com o db");
